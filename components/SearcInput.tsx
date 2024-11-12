@@ -7,7 +7,7 @@ export default function SearcInput() {
   const [searchText, setSearchText] = useState('');
 
   return (
-    <View className="flex flex-row items-center gap-2 px-4 py-2 bg-black bg-gray-100 rounded-full">
+    <View className="flex flex-row items-center gap-2 px-4 py-2 rounded-full">
       <TextInput
         className="flex-1 text-base bg-transparent"
         placeholder="Search messages..."

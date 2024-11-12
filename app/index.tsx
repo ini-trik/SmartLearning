@@ -17,7 +17,7 @@ export default function Home() {
       <Container>
         <SearcInput />
         <MessageCardList />
-        <Link href={{ pathname: '/details', params: { name: 'Dan' } }} asChild>
+        <Link href="/profile" asChild>
           <Button title="Show Details" />
         </Link>
       </Container>
