@@ -4,7 +4,7 @@ export const Logo = () => {
   return (
     <View className="flex flex-row items-center gap-2">
       <Text style={styles.logoU}>
-        U<Text style={styles.logoTalk}>Talk</Text>
+        U<Text style={styles.logoTalk}>saya</Text>
       </Text>
     </View>
   );
