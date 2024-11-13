@@ -9,16 +9,17 @@
 
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native';
+import { useRouter } from 'expo-router';
 
-export default function SignInScreen({ navigation: any }) {
+export default function SignInScreen() {
+  const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSignIn = () => {
-    // Proses sign in, bisa tambahkan validasi atau panggilan API di sini
     if (email && password) {
-      // Jika autentikasi berhasil, navigasikan ke halaman utama atau chat
-      navigation.navigate('ChatScreen');
+      // Jika autentikasi berhasil, navigasikan ke halaman utama
+      router.push('/'); // atau rute lain jika halaman utama berbeda
     } else {
       Alert.alert('Error', 'Please enter both email and password.');
     }
