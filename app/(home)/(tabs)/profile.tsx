@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '~/lib/supabase';
-import { StyleSheet, View, Alert } from 'react-native';
-import { Button, Input } from '@rneui/themed';
-import { Session } from '@supabase/supabase-js';
+import { StyleSheet, View, Alert, ScrollView } from 'react-native';
+import { Input } from '@rneui/themed';
+import { Button } from '~/components/Button';
 import { useAuth } from '~/providers/AuthProvider';
+import Avatar from '~/components/Avatar';
 
 export default function Account() {
   const { session } = useAuth();
@@ -81,7 +82,17 @@ export default function Account() {
   }
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
+      <View style={{ alignItems: 'center' }}>
+        <Avatar
+          size={200}
+          url={avatarUrl}
+          onUpload={(url: string) => {
+            setAvatarUrl(url);
+            updateProfile({ username, avatar_url: url, full_name: fullName });
+          }}
+        />
+      </View>
       <View style={[styles.verticallySpaced, styles.mt20]}>
         <Input label="Email" value={session?.user?.email} disabled />
       </View>
@@ -107,7 +118,7 @@ export default function Account() {
       <View style={styles.verticallySpaced}>
         <Button title="Sign Out" onPress={() => supabase.auth.signOut()} />
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
