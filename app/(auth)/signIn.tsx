@@ -17,6 +17,7 @@ export default function SignInScreen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const [fullName, setFullName] = useState('');
 
   async function signInWithEmail() {
     setLoading(true);
@@ -37,9 +38,15 @@ export default function SignInScreen() {
     } = await supabase.auth.signUp({
       email: email,
       password: password,
+      options: {
+        data: {
+          full_name: fullName,
+        },
+      },
     });
 
     if (error) Alert.alert(error.message);
+
     setLoading(false);
   }
   return (
@@ -47,6 +54,16 @@ export default function SignInScreen() {
       <Stack.Screen options={{ headerShown: false }} />
       <View style={styles.container}>
         <Text style={styles.title}>Sign In to Chat App</Text>
+
+        <Text style={styles.label}>Full Name</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Enter your full name"
+          value={fullName}
+          onChangeText={(text) => setFullName(text)}
+          autoCapitalize="words"
+          keyboardType="default"
+        />
 
         <Text style={styles.label}>Email</Text>
         <TextInput

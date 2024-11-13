@@ -1,8 +1,10 @@
-import { View, Text, FlatList } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { supabase } from '~/lib/supabase';
 import { useAuth } from '~/providers/AuthProvider';
 import UserListItems from '~/components/UserListItems';
+import { FontAwesome5 } from '@expo/vector-icons';
+import { Link, router } from 'expo-router';
 
 export default function UsersScreen() {
   const [users, setUsers] = useState([]);
@@ -17,10 +19,14 @@ export default function UsersScreen() {
   }, [user?.id]); // Add user?.id as dependency since we use it in the effect
 
   return (
-    <FlatList
-      data={users}
-      contentContainerClassName="gap-3"
-      renderItem={({ item }) => <UserListItems user={item} />}
-    />
+    <>
+      <TouchableOpacity
+        onPress={() => router.push('/(home)/group')}
+        className="flex-row items-center gap-2 p-4 mb-3 bg-white rounded-lg">
+        <FontAwesome5 name="users" size={22} color="black" />
+        <Text style={{ fontFamily: 'Outfit_700Bold' }}>Create a group</Text>
+      </TouchableOpacity>
+      <FlatList data={users} renderItem={({ item }) => <UserListItems user={item} />} />
+    </>
   );
 }

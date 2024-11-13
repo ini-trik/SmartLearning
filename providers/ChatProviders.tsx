@@ -8,12 +8,13 @@ import { supabase } from '~/lib/supabase';
 const client = StreamChat.getInstance(process.env.EXPO_PUBLIC_STREAM_API_KEY!);
 export default function ChatProviders({ children }: PropsWithChildren) {
   const [isReady, setIsReady] = useState(false);
-  const { profile } = useAuth();
+  const { profile, user } = useAuth();
 
   useEffect(() => {
     if (!profile) {
       return;
     }
+
     const connect = async () => {
       await client.connectUser(
         {
