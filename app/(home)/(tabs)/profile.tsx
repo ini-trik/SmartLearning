@@ -5,6 +5,7 @@ import { Input } from '@rneui/themed';
 import { Button } from '~/components/Button';
 import { useAuth } from '~/providers/AuthProvider';
 import Avatar from '~/components/Avatar';
+import { Container } from '~/components/Container';
 
 export default function Account() {
   const { session } = useAuth();
@@ -82,42 +83,48 @@ export default function Account() {
   }
 
   return (
-    <ScrollView style={styles.container}>
-      <View style={{ alignItems: 'center' }}>
-        <Avatar
-          size={200}
-          url={avatarUrl}
-          onUpload={(url: string) => {
-            setAvatarUrl(url);
-            updateProfile({ username, avatar_url: url, full_name: fullName });
-          }}
-        />
-      </View>
-      <View style={[styles.verticallySpaced, styles.mt20]}>
-        <Input label="Email" value={session?.user?.email} disabled />
-      </View>
-      <View style={styles.verticallySpaced}>
-        <Input label="Username" value={username || ''} onChangeText={(text) => setUsername(text)} />
-      </View>
-      <View style={styles.verticallySpaced}>
-        <Input
-          label="Full Name"
-          value={fullName || ''}
-          onChangeText={(text) => setFullName(text)}
-        />
-      </View>
+    <ScrollView>
+      <Container>
+        <View style={{ alignItems: 'center' }}>
+          <Avatar
+            size={200}
+            url={avatarUrl}
+            onUpload={(url: string) => {
+              setAvatarUrl(url);
+              updateProfile({ username, avatar_url: url, full_name: fullName });
+            }}
+          />
+        </View>
+        <View style={[styles.verticallySpaced, styles.mt20]}>
+          <Input label="Email" value={session?.user?.email} disabled />
+        </View>
+        <View style={styles.verticallySpaced}>
+          <Input
+            label="Username"
+            value={username || ''}
+            onChangeText={(text) => setUsername(text)}
+          />
+        </View>
+        <View style={styles.verticallySpaced}>
+          <Input
+            label="Full Name"
+            value={fullName || ''}
+            onChangeText={(text) => setFullName(text)}
+          />
+        </View>
 
-      <View style={[styles.verticallySpaced, styles.mt20]}>
-        <Button
-          title={loading ? 'Loading ...' : 'Update'}
-          onPress={() => updateProfile({ username, avatar_url: avatarUrl, full_name: fullName })}
-          disabled={loading}
-        />
-      </View>
+        <View style={[styles.verticallySpaced, styles.mt20]}>
+          <Button
+            title={loading ? 'Loading ...' : 'Update'}
+            onPress={() => updateProfile({ username, avatar_url: avatarUrl, full_name: fullName })}
+            disabled={loading}
+          />
+        </View>
 
-      <View style={styles.verticallySpaced}>
-        <Button title="Sign Out" onPress={() => supabase.auth.signOut()} />
-      </View>
+        <View style={styles.verticallySpaced}>
+          <Button title="Sign Out" onPress={() => supabase.auth.signOut()} />
+        </View>
+      </Container>
     </ScrollView>
   );
 }
