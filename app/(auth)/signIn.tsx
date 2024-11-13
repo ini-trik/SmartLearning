@@ -53,7 +53,10 @@ export default function SignInScreen() {
     <>
       <Stack.Screen options={{ headerShown: false }} />
       <View style={styles.container}>
-        <Text style={styles.title}>Sign In to Chat App</Text>
+        <Text style={styles.title}>
+          Sign In to <Text style={styles.logoU}>U</Text>
+          <Text style={styles.logoTalk}>Talk</Text>
+        </Text>
 
         <Text style={styles.label}>Full Name</Text>
         <TextInput
@@ -126,5 +129,13 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     padding: 12,
     marginBottom: 16,
+  },
+  logoU: {
+    fontFamily: 'Outfit_700Bold',
+    color: '#DDA915',
+  },
+  logoTalk: {
+    fontFamily: 'Outfit_700Bold',
+    color: '#3470A2',
   },
 });
