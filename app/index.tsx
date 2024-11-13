@@ -8,16 +8,10 @@ import SearcInput from '~/components/SearcInput';
 export default function Home() {
   return (
     <>
-      <Stack.Screen
-        options={{
-          headerTitle: () => <Logo />,
-          headerTitleAlign: 'center',
-        }}
-      />
       <Container>
         <SearcInput />
         <MessageCardList />
-        <Link href="/profile" asChild>
+        <Link href="/(home)" asChild>
           <Button title="Show Details" />
         </Link>
       </Container>

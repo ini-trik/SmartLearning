@@ -12,7 +12,7 @@ import {
   Outfit_900Black,
 } from '@expo-google-fonts/outfit';
 import * as SplashScreen from 'expo-splash-screen';
-import { Stack } from 'expo-router';
+import { Slot, Stack } from 'expo-router';
 import { useEffect } from 'react';
 
 SplashScreen.preventAutoHideAsync();
@@ -39,5 +39,5 @@ export default function Layout() {
   if (!loaded && !error) {
     return null;
   }
-  return <Stack />;
+  return <Slot />;
 }
