@@ -1,5 +1,5 @@
 import { View, Text } from 'react-native';
-import { Tabs } from 'expo-router';
+import { Link, Tabs } from 'expo-router';
 import { Feather, FontAwesome, FontAwesome5, FontAwesome6 } from '@expo/vector-icons';
 
 export default function TabsNavigator() {
@@ -9,6 +9,11 @@ export default function TabsNavigator() {
         name="index"
         options={{
           title: 'Chats',
+          headerRight: () => (
+            <Link href={'/(home)/users'} asChild>
+              <FontAwesome5 name="users" size={22} color="gray" style={{ marginHorizontal: 15 }} />
+            </Link>
+          ),
           tabBarIcon: ({ size, color }) => <FontAwesome5 name="home" size={size} color={color} />,
         }}></Tabs.Screen>
       <Tabs.Screen

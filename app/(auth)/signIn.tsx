@@ -7,6 +7,7 @@
  * @description : Sign in page
  **/
 
+import { Stack } from 'expo-router';
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, Alert } from 'react-native';
 import { Button } from '~/components/Button';
@@ -39,44 +40,46 @@ export default function SignInScreen() {
     });
 
     if (error) Alert.alert(error.message);
-    if (!session) Alert.alert('Please check your inbox for email verification!');
     setLoading(false);
   }
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Sign In to Chat App</Text>
+    <>
+      <Stack.Screen options={{ headerShown: false }} />
+      <View style={styles.container}>
+        <Text style={styles.title}>Sign In to Chat App</Text>
 
-      <Text style={styles.label}>Email</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Enter your email"
-        value={email}
-        onChangeText={(text) => setEmail(text)}
-        autoCapitalize="none"
-        keyboardType="email-address"
-      />
+        <Text style={styles.label}>Email</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Enter your email"
+          value={email}
+          onChangeText={(text) => setEmail(text)}
+          autoCapitalize="none"
+          keyboardType="email-address"
+        />
 
-      <Text style={styles.label}>Password</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Enter your password"
-        value={password}
-        onChangeText={(text) => setPassword(text)}
-        secureTextEntry
-        keyboardType="default"
-        autoCapitalize="none"
-      />
+        <Text style={styles.label}>Password</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Enter your password"
+          value={password}
+          onChangeText={(text) => setPassword(text)}
+          secureTextEntry
+          keyboardType="default"
+          autoCapitalize="none"
+        />
 
-      <Button
-        disabled={loading}
-        title="Sign In"
-        onPress={signInWithEmail}
-        style={{
-          marginBottom: 16,
-        }}
-      />
-      <Button disabled={loading} title="Sign Up" onPress={signUpWithEmail} />
-    </View>
+        <Button
+          disabled={loading}
+          title="Sign In"
+          onPress={signInWithEmail}
+          style={{
+            marginBottom: 16,
+          }}
+        />
+        <Button disabled={loading} title="Sign Up" onPress={signUpWithEmail} />
+      </View>
+    </>
   );
 }
 
