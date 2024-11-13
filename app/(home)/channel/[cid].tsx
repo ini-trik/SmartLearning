@@ -25,7 +25,12 @@ export default function ChannelScreen() {
 
   return (
     <>
-      <Stack.Screen options={{ title: channel.data?.name }} />
+      <Stack.Screen
+        options={{
+          title: channel.data?.name ? channel.data.name : 'Chat',
+          headerBackTitleVisible: false,
+        }}
+      />
       <Channel channel={channel}>
         <MessageList />
         <SafeAreaView edges={['bottom']}>

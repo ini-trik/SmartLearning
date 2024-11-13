@@ -1,9 +1,22 @@
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, Pressable } from 'react-native';
 import React from 'react';
+import { useChatContext } from 'stream-chat-expo';
+import { useAuth } from '~/providers/AuthProvider';
+import { router } from 'expo-router';
 
 export default function UserListItems({ user }: { user: any }) {
+  const { client } = useChatContext();
+  const { user: me } = useAuth();
+  const onPress = async () => {
+    const channel = client.channel('messaging', {
+      members: [me?.id, user.id],
+    });
+    await channel.watch();
+    router.push({ pathname: '/(home)/channel/[cid]', params: { cid: channel.cid } });
+  };
+
   return (
-    <View className="p-4 bg-white">
+    <Pressable onPress={onPress} className="p-4 bg-white">
       <View className="flex-row items-center gap-2">
         <Image
           source={{ uri: user.avatar_url ? user.avatar_url : 'https://via.placeholder.com/150' }}
@@ -13,7 +26,7 @@ export default function UserListItems({ user }: { user: any }) {
           {user.full_name ? user.full_name : 'Anonymous'}
         </Text>
       </View>
-    </View>
+    </Pressable>
   );
 }
 
