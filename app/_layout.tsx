@@ -15,6 +15,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { Slot, Stack } from 'expo-router';
 import { useEffect } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import AuthProvider from '~/providers/AuthProvider';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -42,7 +43,9 @@ export default function Layout() {
   }
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <Slot />
+      <AuthProvider>
+        <Slot />
+      </AuthProvider>
     </GestureHandlerRootView>
   );
 }

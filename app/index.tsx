@@ -11,7 +11,7 @@ export default function Home() {
       <Container>
         <SearcInput />
         <MessageCardList />
-        <Link href="/(home)" asChild>
+        <Link href="/(auth)/signIn" asChild>
           <Button title="Show Details" />
         </Link>
       </Container>

@@ -7,3 +7,4 @@ import { router } from 'expo-router';
 export default function Main() {
   return <ChannelList onSelect={(channel) => router.push(`/channel/${channel.cid}`)} />;
 }
+// Password chO4XOeEwziSCzix
