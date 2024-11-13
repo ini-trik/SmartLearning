@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { View, Text } from 'react-native';
 import { Channel, ChannelList, MessageInput, MessageList } from 'stream-chat-expo';
-import { Channel as ChannelType } from 'stream-chat';
+
 import { router } from 'expo-router';
 
 export default function Main() {

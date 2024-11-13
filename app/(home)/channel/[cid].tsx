@@ -1,4 +1,4 @@
-import { useLocalSearchParams } from 'expo-router';
+import { Stack, useLocalSearchParams } from 'expo-router';
 import { View, Text, ActivityIndicator } from 'react-native';
 import { useEffect, useState } from 'react';
 import { Channel as ChannelType } from 'stream-chat';
@@ -24,11 +24,14 @@ export default function ChannelScreen() {
   }
 
   return (
-    <Channel channel={channel}>
-      <MessageList />
-      <SafeAreaView edges={['bottom']}>
-        <MessageInput />
-      </SafeAreaView>
-    </Channel>
+    <>
+      <Stack.Screen options={{ title: channel.data?.name }} />
+      <Channel channel={channel}>
+        <MessageList />
+        <SafeAreaView edges={['bottom']}>
+          <MessageInput />
+        </SafeAreaView>
+      </Channel>
+    </>
   );
 }
