@@ -25,7 +25,7 @@ export default function Home() {
               Talk</Text>!</Text>
 
         <Link href="/signIn" asChild>
-          <Button style={styles.button}  title="Masuk Sekarang" />
+          <Button style={styles.button} title="Masuk Sekarang" />
         </Link>
       </Container>
     </>

@@ -9,7 +9,7 @@
 
 import { Stack } from 'expo-router';
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, Alert } from 'react-native';
+import { View, Text, TextInput, StyleSheet, Alert, ImageBackground } from 'react-native';
 import { Button } from '~/components/Button';
 import { supabase } from '~/lib/supabase';
 
@@ -51,27 +51,31 @@ export default function SignInScreen() {
   }
   return (
     <>
+    {/* <ImageBackground
+      source={require('../assets/background.jpg')} // Pastikan path file sesuai
+      style={styles.background}
+    ></ImageBackground> */}
+
       <Stack.Screen options={{ headerShown: false }} />
       <View style={styles.container}>
         <Text style={styles.title}>
-          Sign In to <Text style={styles.logoU}>U</Text>
-          <Text style={styles.logoTalk}>Talk</Text>
+          Sign In
         </Text>
 
-        <Text style={styles.label}>Full Name</Text>
+        {/* <Text style={styles.label}>Full Name</Text>
         <TextInput
           style={styles.input}
-          placeholder="Enter your full name"
+          placeholder="Masukan Nama"
           value={fullName}
           onChangeText={(text) => setFullName(text)}
           autoCapitalize="words"
           keyboardType="default"
-        />
+        /> */}
 
         <Text style={styles.label}>Email</Text>
         <TextInput
           style={styles.input}
-          placeholder="Enter your email"
+          placeholder="Masukan Email"
           value={email}
           onChangeText={(text) => setEmail(text)}
           autoCapitalize="none"
@@ -81,7 +85,7 @@ export default function SignInScreen() {
         <Text style={styles.label}>Password</Text>
         <TextInput
           style={styles.input}
-          placeholder="Enter your password"
+          placeholder="Masukan Password"
           value={password}
           onChangeText={(text) => setPassword(text)}
           secureTextEntry
@@ -91,19 +95,24 @@ export default function SignInScreen() {
 
         <Button
           disabled={loading}
-          title="Sign In"
+          title="Masuk"
           onPress={signInWithEmail}
           style={{
             marginBottom: 16,
           }}
         />
-        <Button disabled={loading} title="Sign Up" onPress={signUpWithEmail} />
+        {/* <Button disabled={loading} title="Sign Up" onPress={signUpWithEmail} /> */}
       </View>
     </>
   );
 }
 
 const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -111,7 +120,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   title: {
-    fontSize: 24,
+    fontSize: 30,
     fontWeight: 'bold',
     marginBottom: 16,
     textAlign: 'center',
