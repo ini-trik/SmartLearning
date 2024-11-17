@@ -9,7 +9,7 @@
 
 import { Stack, Link } from 'expo-router';
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, Alert, Dimensions } from 'react-native';
+import { View, Text, TextInput, StyleSheet, Alert } from 'react-native';
 import { Button } from '~/components/Button';
 import { supabase } from '~/lib/supabase';
 
@@ -17,7 +17,7 @@ export default function SignInScreen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
-  const [fullName, setFullName] = useState('');
+  // const [fullName, setFullName] = useState('');
   
   async function signInWithEmail() {
     setLoading(true);
@@ -30,25 +30,25 @@ export default function SignInScreen() {
     setLoading(false);
   }
 
-  async function signUpWithEmail() {
-    setLoading(true);
-    const {
-      data: { session },
-      error,
-    } = await supabase.auth.signUp({
-      email: email,
-      password: password,
-      options: {
-        data: {
-          full_name: fullName,
-        },
-      },
-    });
+  // async function signUpWithEmail() {
+  //   setLoading(true);
+  //   const {
+  //     data: { session },
+  //     error,
+  //   } = await supabase.auth.signUp({
+  //     email: email,
+  //     password: password,
+  //     options: {
+  //       data: {
+  //         full_name: fullName,
+  //       },
+  //     },
+  //   });
 
-    if (error) Alert.alert(error.message);
+  //   if (error) Alert.alert(error.message);
 
-    setLoading(false);
-  }
+  //   setLoading(false);
+  // }
   return (
     <>
       <Stack.Screen options={{ headerShown: false }} />
