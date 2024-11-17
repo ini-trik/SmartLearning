@@ -7,9 +7,9 @@
  * @description : Sign in page
  **/
 
-import { Stack } from 'expo-router';
+import { Stack, Link } from 'expo-router';
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, Alert, ImageBackground } from 'react-native';
+import { View, Text, TextInput, StyleSheet, Alert, Dimensions } from 'react-native';
 import { Button } from '~/components/Button';
 import { supabase } from '~/lib/supabase';
 
@@ -18,7 +18,7 @@ export default function SignInScreen() {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [fullName, setFullName] = useState('');
-
+  
   async function signInWithEmail() {
     setLoading(true);
     const { error } = await supabase.auth.signInWithPassword({
@@ -51,15 +51,10 @@ export default function SignInScreen() {
   }
   return (
     <>
-    {/* <ImageBackground
-      source={require('../assets/background.jpg')} // Pastikan path file sesuai
-      style={styles.background}
-    ></ImageBackground> */}
-
       <Stack.Screen options={{ headerShown: false }} />
       <View style={styles.container}>
         <Text style={styles.title}>
-          Sign In
+        SIGN IN
         </Text>
 
         {/* <Text style={styles.label}>Full Name</Text>
@@ -72,7 +67,7 @@ export default function SignInScreen() {
           keyboardType="default"
         /> */}
 
-        <Text style={styles.label}>Email</Text>
+        {/* <Text style={styles.label}>Email</Text> */}
         <TextInput
           style={styles.input}
           placeholder="Masukan Email"
@@ -82,7 +77,18 @@ export default function SignInScreen() {
           keyboardType="email-address"
         />
 
-        <Text style={styles.label}>Password</Text>
+      {/* <View style={styles.inputContainer}>
+        <Icon name="email" size={24} color="#aaa" style={styles.icon} />
+        <TextInput
+          style={styles.input}
+          placeholder="Email"
+          placeholderTextColor="#aaa"
+          value={email}
+          onChangeText={setEmail}
+        />
+      </View> */}
+
+        {/* <Text style={styles.label}>Password</Text> */}
         <TextInput
           style={styles.input}
           placeholder="Masukan Password"
@@ -98,53 +104,55 @@ export default function SignInScreen() {
           title="Masuk"
           onPress={signInWithEmail}
           style={{
-            marginBottom: 16,
+            marginVertical: 16,
           }}
         />
+        <Text style={styles.label}>
+        Belum Memiliki Akun? daftar{' '}
+        <Link href="/signUp" style={styles.link}>
+           di sini
+        </Link> 
+        </Text>     
         {/* <Button disabled={loading} title="Sign Up" onPress={signUpWithEmail} /> */}
-      </View>
+    </View>
     </>
   );
 }
 
 const styles = StyleSheet.create({
-  background: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   container: {
-    flex: 1,
+    flex: 1, 
     justifyContent: 'center',
-    padding: 16,
+    padding: 26,
     backgroundColor: '#fff',
   },
   title: {
     fontSize: 30,
-    fontWeight: 'bold',
-    marginBottom: 16,
+    fontWeight: 700,
+    marginVertical: 40,
     textAlign: 'center',
-    color: '#333',
+    color: '#000',
   },
   label: {
     fontSize: 16,
-    color: '#333',
+    color: '#000',
     marginBottom: 4,
     marginTop: 12,
   },
+  link:{
+    color:'#3FA2F6',
+    textDecorationLine: 'underline',
+    fontWeight: 'bold',
+  },
   input: {
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 8,
-    padding: 12,
+    width: '100%', 
+    borderBottomWidth: 1,
+    borderBottomColor: '#000',
+    paddingVertical: 12,
     marginBottom: 16,
+    backgroundColor: '#fff', 
   },
-  logoU: {
-    fontFamily: 'Outfit_700Bold',
-    color: '#DDA915',
-  },
-  logoTalk: {
-    fontFamily: 'Outfit_700Bold',
-    color: '#3470A2',
-  },
+  button: {
+    marginTop: 20, 
+  }
 });
