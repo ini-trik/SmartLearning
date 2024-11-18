@@ -10,34 +10,26 @@ export default function Home() {
   return (
     <>
       <Container>
-        <Image 
-          source={require('../assets/welcome.png' )}
+        <Image
+          source={require('../assets/welcome.png')}
           style={styles.welcomeImage}
           resizeMode="contain"
         />
 
-        <Text style={styles.welcomeText}>Selamat Datang Di <Text style={styles.logoU}>
-            U</Text><Text style={styles.logoTalk}>
-              Talk</Text></Text>
+        <Text style={styles.welcomeText}>
+          Selamat Datang Di <Text style={styles.logoU}>U</Text>
+          <Text style={styles.logoTalk}>Talk</Text>
+        </Text>
 
-        <Text style={styles.descText}>Jelajahi, temukan, dan tetap terhubung dengan orang-orang favorit Anda. Selamat menikmati percakapan di <Text style={styles.logoU}>
-            U</Text><Text style={styles.logoTalk}>
-              Talk</Text>!</Text>
+        <Text style={styles.descText}>
+          Jelajahi, temukan, dan tetap terhubung dengan orang-orang favorit Anda. Selamat menikmati
+          percakapan di <Text style={styles.logoU}>U</Text>
+          <Text style={styles.logoTalk}>Talk</Text>!
+        </Text>
 
         <Link href="/signIn" asChild>
           <Button title="Masuk Sekarang" />
         </Link>
-
-
-        {/* <SearcInput />
-        <MessageCardList />
-        <Link href="/(auth)/signIn" asChild>
-          <Button title="Show Details" />
-        </Link> */}
-
-        {/* <Link href="/profile" asChild>
-          <Button title="Show Details" />
-        </Link> */}
       </Container>
     </>
   );
@@ -54,9 +46,9 @@ const styles = StyleSheet.create({
   descText: {
     fontSize: 16,
     textAlign: 'center',
-    color: '#555', 
-    marginBottom: 80, 
-    lineHeight: 24, 
+    color: '#555',
+    marginBottom: 80,
+    lineHeight: 24,
   },
   welcomeImage: {
     width: '100%',
