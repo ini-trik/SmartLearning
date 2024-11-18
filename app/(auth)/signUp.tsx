@@ -1,15 +1,6 @@
-/**
- * Sign in page
- * @author: @fahmousss
- * @version: 1.0.0
- * @since: 2024-11-12
- * @assigned_to : @ini_trik
- * @description : Sign in page
- **/
-
 import { Stack, Link } from 'expo-router';
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, Alert } from 'react-native';
+import { View, Text, TextInput, StyleSheet, Alert} from 'react-native';
 import { Button } from '~/components/Button';
 import { supabase } from '~/lib/supabase';
 
@@ -17,47 +8,47 @@ export default function SignInScreen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
-  // const [fullName, setFullName] = useState('');
+  const [fullName, setFullName] = useState('');
   
-  async function signInWithEmail() {
+//   async function signInWithEmail() {
+//     setLoading(true);
+//     const { error } = await supabase.auth.signInWithPassword({
+//       email: email,
+//       password: password,
+//     });
+
+//     if (error) Alert.alert(error.message);
+//     setLoading(false);
+//   }
+
+  async function signUpWithEmail() {
     setLoading(true);
-    const { error } = await supabase.auth.signInWithPassword({
+    const {
+      data: { session },
+      error,
+    } = await supabase.auth.signUp({
       email: email,
       password: password,
+      options: {
+        data: {
+          full_name: fullName,
+        },
+      },
     });
 
     if (error) Alert.alert(error.message);
+
     setLoading(false);
   }
-
-  // async function signUpWithEmail() {
-  //   setLoading(true);
-  //   const {
-  //     data: { session },
-  //     error,
-  //   } = await supabase.auth.signUp({
-  //     email: email,
-  //     password: password,
-  //     options: {
-  //       data: {
-  //         full_name: fullName,
-  //       },
-  //     },
-  //   });
-
-  //   if (error) Alert.alert(error.message);
-
-  //   setLoading(false);
-  // }
   return (
     <>
       <Stack.Screen options={{ headerShown: false }} />
       <View style={styles.container}>
         <Text style={styles.title}>
-        SIGN IN
+        SIGN UP
         </Text>
 
-        {/* <Text style={styles.label}>Full Name</Text>
+        {/* <Text style={styles.label}>Full Name</Text> */}
         <TextInput
           style={styles.input}
           placeholder="Masukan Nama"
@@ -65,7 +56,7 @@ export default function SignInScreen() {
           onChangeText={(text) => setFullName(text)}
           autoCapitalize="words"
           keyboardType="default"
-        /> */}
+        />
 
         {/* <Text style={styles.label}>Email</Text> */}
         <TextInput
@@ -102,14 +93,14 @@ export default function SignInScreen() {
         <Button
           disabled={loading}
           title="Masuk"
-          onPress={signInWithEmail}
+          onPress={signUpWithEmail}
           style={{
             marginVertical: 16,
           }}
         />
         <Text style={styles.label}>
-        Belum Memiliki Akun? daftar{' '}
-        <Link href="/signUp" style={styles.link}>
+        Sudah Memiliki Akun? masuk{' '}
+        <Link href="/signIn" style={styles.link}>
            di sini
         </Link> 
         </Text>     
