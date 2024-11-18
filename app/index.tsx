@@ -25,19 +25,8 @@ export default function Home() {
               Talk</Text>!</Text>
 
         <Link href="/signIn" asChild>
-          <Button title="Masuk Sekarang" />
+          <Button style={styles.button} title="Masuk Sekarang"/>
         </Link>
-
-
-        {/* <SearcInput />
-        <MessageCardList />
-        <Link href="/(auth)/signIn" asChild>
-          <Button title="Show Details" />
-        </Link> */}
-
-        {/* <Link href="/profile" asChild>
-          <Button title="Show Details" />
-        </Link> */}
       </Container>
     </>
   );
@@ -45,7 +34,7 @@ export default function Home() {
 
 const styles = StyleSheet.create({
   welcomeText: {
-    fontSize: 20,
+    fontSize: 30,
     fontWeight: 'bold',
     textAlign: 'center',
     marginVertical: 16,
@@ -55,13 +44,15 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textAlign: 'center',
     color: '#555', 
-    marginBottom: 80, 
+    marginBottom: 40,
     lineHeight: 24, 
   },
   welcomeImage: {
+    // marginTop: 18,
+    // marginBottom: 10,
+    marginVertical: 15,
     width: '100%',
     height: 400,
-    // marginBottom: 16,
   },
   logoU: {
     fontFamily: 'Outfit_700Bold',
@@ -71,4 +62,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Outfit_700Bold',
     color: '#3470A2',
   },
+  button: {
+    marginTop: 20, 
+  }
 });
