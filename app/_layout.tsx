@@ -12,8 +12,10 @@ import {
   Outfit_900Black,
 } from '@expo-google-fonts/outfit';
 import * as SplashScreen from 'expo-splash-screen';
-import { Stack } from 'expo-router';
+import { Slot, Stack } from 'expo-router';
 import { useEffect } from 'react';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import AuthProvider from '~/providers/AuthProvider';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -39,5 +41,11 @@ export default function Layout() {
   if (!loaded && !error) {
     return null;
   }
-  return <Stack />;
+  return (
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <AuthProvider>
+        <Slot />
+      </AuthProvider>
+    </GestureHandlerRootView>
+  );
 }
