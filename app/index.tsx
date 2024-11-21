@@ -10,22 +10,25 @@ export default function Home() {
   return (
     <>
       <Container>
-        <Image 
-          source={require('../assets/welcome.png' )}
+        <Image
+          source={require('../assets/welcome.png')}
           style={styles.welcomeImage}
           resizeMode="contain"
         />
 
-        <Text style={styles.welcomeText}>Selamat Datang Di <Text style={styles.logoU}>
-            U</Text><Text style={styles.logoTalk}>
-              Talk</Text></Text>
+        <Text style={styles.welcomeText}>
+          Selamat Datang Di <Text style={styles.logoU}>U</Text>
+          <Text style={styles.logoTalk}>Talk</Text>
+        </Text>
 
-        <Text style={styles.descText}>Jelajahi, temukan, dan tetap terhubung dengan orang-orang favorit Anda. Selamat menikmati percakapan di <Text style={styles.logoU}>
-            U</Text><Text style={styles.logoTalk}>
-              Talk</Text>!</Text>
+        <Text style={styles.descText}>
+          Jelajahi, temukan, dan tetap terhubung dengan orang-orang favorit Anda. Selamat menikmati
+          percakapan di <Text style={styles.logoU}>U</Text>
+          <Text style={styles.logoTalk}>Talk</Text>!
+        </Text>
 
         <Link href="/signIn" asChild>
-          <Button style={styles.button} title="Masuk Sekarang"/>
+          <Button style={styles.button} title="Masuk Sekarang" />
         </Link>
       </Container>
     </>
@@ -43,9 +46,9 @@ const styles = StyleSheet.create({
   descText: {
     fontSize: 16,
     textAlign: 'center',
-    color: '#555', 
+    color: '#555',
     marginBottom: 40,
-    lineHeight: 24, 
+    lineHeight: 24,
   },
   welcomeImage: {
     // marginTop: 18,
@@ -63,6 +66,6 @@ const styles = StyleSheet.create({
     color: '#3470A2',
   },
   button: {
-    marginTop: 20, 
-  }
+    marginTop: 20,
+  },
 });

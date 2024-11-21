@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabase';
-import { StyleSheet, View, Alert, Image } from 'react-native';
+import { StyleSheet, View, Alert, Image, TouchableOpacity } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { Button } from './Button';
+import { Feather, FontAwesome6, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 
 interface Props {
   size: number;
@@ -90,7 +91,7 @@ export default function Avatar({ url, size = 150, onUpload }: Props) {
   }
 
   return (
-    <View>
+    <View className='relative mb-4'>
       {avatarUrl ? (
         <Image
           source={{ uri: avatarUrl }}
@@ -100,12 +101,15 @@ export default function Avatar({ url, size = 150, onUpload }: Props) {
       ) : (
         <View style={[avatarSize, styles.avatar, styles.noImage]} />
       )}
-      <View className="mt-4">
-        <Button
+      <View className="absolute right-5 bottom-1">
+        {/* <Button
           title={uploading ? 'Uploading ...' : 'Upload'}
           onPress={uploadAvatar}
           disabled={uploading}
-        />
+        /> */}
+        <TouchableOpacity  onPress={uploadAvatar} className='bg-[#3470A2] p-2 rounded-full'>
+        <MaterialCommunityIcons name='pencil' size={24} color="white" />
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -116,6 +120,7 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     overflow: 'hidden',
     maxWidth: '100%',
+    borderWidth: 3,
   },
   image: {
     objectFit: 'cover',
@@ -123,9 +128,9 @@ const styles = StyleSheet.create({
   },
   noImage: {
     backgroundColor: '#333',
-    borderWidth: 1,
+    borderWidth: 5,
     borderStyle: 'solid',
-    borderColor: 'rgb(200, 200, 200)',
+    borderColor: 'white',
     borderRadius: 100,
   },
 });
