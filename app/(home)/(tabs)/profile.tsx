@@ -77,7 +77,7 @@ export default function Account() {
         Alert.alert(error.message);
       }
     } finally {
-      Alert.alert('Profile updated successfully');
+      Alert.alert('Berhasil menyimpan perubahan');
       setLoading(false);
     }
   }
@@ -115,14 +115,10 @@ export default function Account() {
 
         <View style={[styles.verticallySpaced, styles.mt20]}>
           <Button
-            title={loading ? 'Loading ...' : 'Update'}
+            title={loading ? 'Loading ...' : 'Simpan'}
             onPress={() => updateProfile({ username, avatar_url: avatarUrl, full_name: fullName })}
-            disabled={loading}
+            disabled={loading} 
           />
-        </View>
-
-        <View style={styles.verticallySpaced}>
-          <Button title="Sign Out" onPress={() => supabase.auth.signOut()} />
         </View>
       </Container>
     </ScrollView>
