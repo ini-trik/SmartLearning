@@ -1,12 +1,13 @@
 import { router, Stack, useLocalSearchParams } from 'expo-router';
-import { View, Text, ActivityIndicator, Button } from 'react-native';
+import { View, Text, ActivityIndicator, Button, TouchableOpacity, StyleSheet } from 'react-native';
 import { useEffect, useState } from 'react';
 import { Channel as ChannelType } from 'stream-chat';
 import { MessageInput, useChatContext } from 'stream-chat-expo';
 import { MessageList } from 'stream-chat-expo';
 import { Channel } from 'stream-chat-expo';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { FontAwesome5 } from '@expo/vector-icons';
+import { FontAwesome5, Ionicons } from '@expo/vector-icons';
+import HeaderRight from '~/components/HeaderRight';
 
 export default function ChannelScreen() {
   const [channel, setChannel] = useState<ChannelType | null>(null);
@@ -32,15 +33,32 @@ export default function ChannelScreen() {
           headerBackTitleVisible: false,
           headerRight: () => {
             return (
-              <FontAwesome5
-                name="trash"
-                size={24}
-                color="red"
-                onPress={async () => {
+              <HeaderRight>
+
+                <TouchableOpacity
+                  style={styles.menuItem}
+                  className=' gap-1 flex flex-row'>
+                  <Ionicons
+                    name="information-circle"
+                    size={20}
+                  />
+                  <Text>Info grup</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={async () => {
                   await channel.delete();
                   router.push('/(home)');
                 }}
-              />
+                  style={styles.menuItem}
+                  className=' gap-1 flex flex-row'>
+                  <Ionicons
+                    name="trash"
+                    color={'red'}
+                    size={20}
+                  />
+                  <Text className='text-red-400'>Delete</Text>
+                </TouchableOpacity>
+
+              </HeaderRight>
             );
           },
         }}
@@ -58,3 +76,10 @@ export default function ChannelScreen() {
     </>
   );
 }
+
+const styles = StyleSheet.create({
+  menuItem: {
+    padding: 8,
+    alignItems: 'center',
+  },
+})
