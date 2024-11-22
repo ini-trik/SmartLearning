@@ -3,32 +3,29 @@ import { Link, Tabs } from 'expo-router';
 import { Feather, FontAwesome, FontAwesome5, FontAwesome6, Ionicons } from '@expo/vector-icons';
 import { useState } from 'react';
 import HeaderRight from '~/components/HeaderRight';
+import { supabase } from '~/lib/supabase';
 
 export default function TabsNavigator() {
-  const [menuVisible, setMenuVisible] = useState(false); // State untuk menu dropdown
 
-  const toggleMenu = () => {
-    setMenuVisible(!menuVisible); // Toggle visibilitas menu
-  };
 
   return (
     <Tabs
       screenOptions={{
         tabBarStyle: {
-          backgroundColor: '#fff', 
-          height: 55, 
+          backgroundColor: '#fff',
+          height: 55,
         },
         tabBarItemStyle: {
-          width: 100, 
+          width: 100,
         },
-        tabBarActiveTintColor: '#FFC727', 
-        tabBarInactiveTintColor: 'gray', 
+        tabBarActiveTintColor: '#FFC727',
+        tabBarInactiveTintColor: 'gray',
         tabBarLabelStyle: {
-          marginTop: 5, 
-          fontSize: 12, 
+          marginTop: 5,
+          fontSize: 12,
         },
         tabBarIconStyle: {
-          marginBottom: -5, 
+          marginBottom: -5,
         },
       }}
     >
@@ -49,7 +46,16 @@ export default function TabsNavigator() {
         options={{
           title: 'Profile',
           headerRight: () => (
-            <HeaderRight />
+            <HeaderRight>
+              
+                <TouchableOpacity style={styles.menuItem} onPress={() => console.log('Media Grup')}>
+                  <Text style={styles.menuText}>Laporkan</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.menuItem} onPress={async () => await supabase.auth.signOut()}>
+                  <Text style={styles.menuText}>Sign Out</Text>
+                </TouchableOpacity>
+              
+            </HeaderRight>
           ),
           tabBarIcon: ({ size, color }) => (
             <Ionicons name="person-circle-outline" size={31} color={color} />
@@ -58,3 +64,26 @@ export default function TabsNavigator() {
     </Tabs>
   );
 }
+const styles = StyleSheet.create({
+  modalOverlay: {
+    flex: 1,
+  },
+  menuContainer: {
+    position: 'absolute',
+    top: 55,
+    right: 2,
+    backgroundColor: '#fff',
+    borderRadius: 12,
+    paddingVertical: 10,
+    width: 120,
+    elevation: 5,
+  },
+  menuItem: {
+    padding: 8,
+    alignItems: 'center',
+  },
+  menuText: {
+    fontSize: 16,
+    color: '#333',
+  },
+});

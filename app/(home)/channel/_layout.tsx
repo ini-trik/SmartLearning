@@ -6,6 +6,9 @@ export default function ChannelLayout() {
   return (
     <Stack>
       <Stack.Screen name="[cid]" />
+      <Stack.Screen name="info" options={{
+        title:"Deskripsi"
+      }} />
     </Stack>
   );
 }
