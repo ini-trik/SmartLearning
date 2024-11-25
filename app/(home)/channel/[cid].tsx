@@ -78,7 +78,7 @@ export default function ChannelScreen() {
         </SafeAreaView>
       </Channel >
 
-      <Modal
+      {/* <Modal
         animationType="slide"
         transparent={true}
         visible={modalVisible}
@@ -101,7 +101,7 @@ export default function ChannelScreen() {
             </Pressable>
           </View>
         </View>
-      </Modal>
+      </Modal> */}
     </>
   );
 }
@@ -111,40 +111,40 @@ const styles = StyleSheet.create({
     padding: 8,
     alignItems: 'center',
   },
-  modalOverlay: {
-    flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Latar belakang transparan gelap
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  modalContent: {
-    width: '80%',
-    backgroundColor: 'white',
-    borderRadius: 10,
-    padding: 20,
-    // alignItems: 'center',
-  },
-  modalTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginBottom: 15,
-    justifyContent: 'center',
-    alignSelf: 'center',
-  },
-  modalText: {
-    fontSize: 16,
-    marginBottom: 10,
-  },
-  closeButton: {
-    marginTop: 15,
-    backgroundColor: '#3470A2',
-    padding: 10,
-    borderRadius: 5,
-    alignSelf: 'center',
-  },
-  closeButtonText: {
-    color: 'white',
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
+  // modalOverlay: {
+  //   flex: 1,
+  //   backgroundColor: 'rgba(0, 0, 0, 0.5)', // Latar belakang transparan gelap
+  //   justifyContent: 'center',
+  //   alignItems: 'center',
+  // },
+  // modalContent: {
+  //   width: '80%',
+  //   backgroundColor: 'white',
+  //   borderRadius: 10,
+  //   padding: 20,
+  //   // alignItems: 'center',
+  // },
+  // modalTitle: {
+  //   fontSize: 18,
+  //   fontWeight: 'bold',
+  //   marginBottom: 15,
+  //   justifyContent: 'center',
+  //   alignSelf: 'center',
+  // },
+  // modalText: {
+  //   fontSize: 16,
+  //   marginBottom: 10,
+  // },
+  // closeButton: {
+  //   marginTop: 15,
+  //   backgroundColor: '#3470A2',
+  //   padding: 10,
+  //   borderRadius: 5,
+  //   alignSelf: 'center',
+  // },
+  // closeButtonText: {
+  //   color: 'white',
+  //   fontSize: 16,
+  //   fontWeight: 'bold',
+  // },
 })
