@@ -4,7 +4,7 @@ import { View, Modal, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { supabase } from "~/lib/supabase";
 
 
-export default function HeaderRight() {
+export default function HeaderRight({ children }: { children: React.ReactNode }) {
     const [menuVisible, setMenuVisible] = useState(false); // State untuk menu dropdown
 
     const toggleMenu = () => {
@@ -27,12 +27,8 @@ export default function HeaderRight() {
                     onPress={toggleMenu}
                 >
                     <View style={styles.menuContainer}>
-                        <TouchableOpacity style={styles.menuItem} onPress={() => console.log('Media Grup')}>
-                            <Text style={styles.menuText}>Laporkan</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.menuItem} onPress={async () => await supabase.auth.signOut()}>
-                            <Text style={styles.menuText}>Sign Out</Text>
-                        </TouchableOpacity>
+
+                        {children}
                     </View>
                 </TouchableOpacity>
             </Modal>
@@ -45,7 +41,7 @@ const styles = StyleSheet.create({
     },
     menuContainer: {
         position: 'absolute',
-        top: 55, 
+        top: 55,
         right: 2,
         backgroundColor: '#fff',
         borderRadius: 12,
